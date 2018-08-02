@@ -1,0 +1,24 @@
+.layui-tab {
+    margin: 0;
+    height: 100%;
+}
+.layui-tab-title {
+    height: 4.4%;
+}
+.layui-tab-content {
+    height: 95.5%;
+}
+.layui-tab-title .layui-this {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: rgb(255, 255, 255);
+}
+.layui-tab-content .layui-tab-item {
+    height: 100%;
+    width: 100%;
+    padding: 5px;
+    box-sizing: border-box;
+}
+iframe {
+    height: 100%;
+    width: 100%;
+}

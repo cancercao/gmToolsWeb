@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <title>layout 后台大布局 - Layui</title>
   <link rel="stylesheet" href="static/layui/css/layui.css">
+  <link rel="stylesheet" href="static/css/base.css">
   <script src="static/js/jquery-3.3.1.min.js"></script>
   <script src="static/layui/layui.js"></script>
 </head>
@@ -13,33 +14,7 @@
 <body class="layui-layout-body">
   <div class="layui-layout layui-layout-admin">
     <div class="layui-header">
-      <div class="layui-logo">layui 后台布局</div>
-      <!-- 头部区域（可配合layui已有的水平导航） -->
-      <!-- <ul class="layui-nav layui-layout-left">
-        <li class="layui-nav-item">
-          <a href="">控制台</a>
-        </li>
-        <li class="layui-nav-item">
-          <a href="">商品管理</a>
-        </li>
-        <li class="layui-nav-item">
-          <a href="">用户</a>
-        </li>
-        <li class="layui-nav-item">
-          <a href="javascript:;">其它系统</a>
-          <dl class="layui-nav-child">
-            <dd>
-              <a href="">邮件管理</a>
-            </dd>
-            <dd>
-              <a href="">消息管理</a>
-            </dd>
-            <dd>
-              <a href="">授权管理</a>
-            </dd>
-          </dl>
-        </li>
-      </ul> -->
+      <div class="layui-logo">鲸拓运营后台</div>
       <ul class="layui-nav layui-layout-right">
         <li class="layui-nav-item">
           <a href="javascript:;">
@@ -68,37 +43,37 @@
             <a class="" href="javascript:;">数据中心</a>
             <dl class="layui-nav-child">
               <dd class="layui-this">
-                <a href="javascript:;">运营数据</a>
+                <a href="javascript:;" class="site-demo-active" data-type="tabAdd" data-url="templates/operating" data-id="data-1" data-title="运营数据">运营数据</a>
               </dd>
               <dd>
-                <a href="javascript:;">私人房数据</a>
+                <a href="javascript:;" class="site-demo-active" data-type="tabAdd" data-url="a" data-id="data-2" data-title="私人房数据">私人房数据</a>
               </dd>
               <dd>
-                <a href="javascript:;">金币场数据</a>
+                <a href="javascript:;" class="site-demo-active" data-type="tabAdd" data-url="a" data-id="data-3" data-title="金币场数据">金币场数据</a>
               </dd>
               <dd>
-                <a href="javascript:;">开局数据</a>
+                <a href="javascript:;" class="site-demo-active" data-type="tabAdd" data-url="a" data-id="data-4" data-title="开局数据">开局数据</a>
               </dd>
               <dd>
-                <a href="javascript:;">房卡数据</a>
+                <a href="javascript:;" class="site-demo-active" data-type="tabAdd" data-url="a" data-id="data-5" data-title="房卡数据">房卡数据</a>
               </dd>
               <dd>
-                <a href="javascript:;">金币数据</a>
+                <a href="javascript:;" class="site-demo-active" data-type="tabAdd" data-url="a" data-id="data-6" data-title="金币数据">金币数据</a>
               </dd>
               <dd>
-                <a href="javascript:;">充值一览</a>
+                <a href="javascript:;" class="site-demo-active" data-type="tabAdd" data-url="a" data-id="data-7" data-title="充值一览">充值一览</a>
               </dd>
               <dd>
-                <a href="javascript:;">金币流水</a>
+                <a href="javascript:;" class="site-demo-active" data-type="tabAdd" data-url="a" data-id="data-8" data-title="金币流水">金币流水</a>
               </dd>
               <dd>
-                <a href="javascript:;">房卡流水</a>
+                <a href="javascript:;" class="site-demo-active" data-type="tabAdd" data-url="a" data-id="data-9" data-title="房卡流水">房卡流水</a>
               </dd>
               <dd>
-                <a href="javascript:;">留存统计</a>
+                <a href="javascript:;" class="site-demo-active" data-type="tabAdd" data-url="a" data-id="data-10" data-title="留存统计">留存统计</a>
               </dd>
               <dd>
-                <a href="javascript:;">对局战绩</a>
+                <a href="javascript:;" class="site-demo-active" data-type="tabAdd" data-url="a" data-id="data-11" data-title="对局战绩">对局战绩</a>
               </dd>
             </dl>
           </li>
@@ -106,13 +81,13 @@
             <a href="javascript:;">实时数据</a>
             <dl class="layui-nav-child">
               <dd>
-                <a href="javascript:;">五分钟注册</a>
+                <a href="javascript:;" class="site-demo-active" data-type="tabAdd" data-url="a" data-id="real-1" data-title="五分钟注册">五分钟注册</a>
               </dd>
               <dd>
-                <a href="javascript:;">五分钟在线</a>
+                <a href="javascript:;" class="site-demo-active" data-type="tabAdd" data-url="a" data-id="real-2" data-title="五分钟在线">五分钟在线</a>
               </dd>
               <dd>
-                <a href="javascript:;">五分钟充值</a>
+                <a href="javascript:;" class="site-demo-active" data-type="tabAdd" data-url="a" data-id="real-3" data-title="五分钟充值">五分钟充值</a>
               </dd>
             </dl>
           </li>
@@ -120,10 +95,10 @@
             <a href="javascript:;">代理中心</a>
             <di class="layui-nav-child">
               <dd>
-                <a href="javascript:;">代理数据</a>
+                <a href="javascript:;" class="site-demo-active" data-type="tabAdd" data-url="a" data-id="agent-1" data-title="代理数据">代理数据</a>
               </dd>
               <dd>
-                <a href="javascript:;">代理业绩</a>
+                <a href="javascript:;" class="site-demo-active" data-type="tabAdd" data-url="a" data-id="agent-2" data-title="代理业绩">代理业绩</a>
               </dd>
             </di>
           </li>
@@ -131,10 +106,10 @@
             <a href="javascript:;">工会</a>
             <dl class="layui-nav-child">
               <dd>
-                <a href="javascript:;">工会数据</a>
+                <a href="javascript:;" class="site-demo-active" data-type="tabAdd" data-url="a" data-id="tu-1" data-title="工会数据">工会数据</a>
               </dd>
               <dd>
-                <a href="javascript:;">工会一览</a>
+                <a href="javascript:;" class="site-demo-active" data-type="tabAdd" data-url="a" data-id="tu-2" data-title="工会一览">工会一览</a>
               </dd>
             </dl>
           </li>
@@ -142,7 +117,7 @@
             <a href="javascript:;">玩家管理</a>
             <dl class="layui-nav-child">
               <dd>
-                <a href="javascript:;">玩家管理</a>
+                <a href="javascript:;" class="site-demo-active" data-type="tabAdd" data-url="a" data-id="manage-1" data-title="玩家管理">玩家管理</a>
               </dd>
             </dl>
           </li>
@@ -154,28 +129,15 @@
     </div>
     <div class="layui-body">
       <!-- 内容主体区域 -->
-      <div class="layui-tab" lay-allowClose="true">
+      <div class="layui-tab" lay-allowClose="true" lay-filter="demo">
         <ul class="layui-tab-title" id="tabTitleList">
-          <!-- <li class="layui-this">网站设置</li> -->
         </ul>
         <div class="layui-tab-content">
-          <!-- <div class="layui-tab-item layui-show">1</div> -->
         </div>
       </div>
     </div>
   </div>
-  <script>
-    //JavaScript代码区域
-    layui.use('element', function () {
-      var element = layui.element;
-
-    });
-
-    // 开启页面默认显示列表第一个
-    var newLi = $('<li class="layui-this">' + $('#navList dd').eq(0).text() + '</li>');
-    $('#tabTitleList').append(newLi);
-
-  </script>
+  <script src="static/js/index.js"></script>
 </body>
 
 </html>

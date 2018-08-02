@@ -2,23 +2,78 @@
     margin: 0;
     height: 100%;
 }
-.layui-tab-title {
-    height: 4.4%;
-}
-.layui-tab-content {
-    height: 95.5%;
-}
-.layui-tab-title .layui-this {
-    background-color: rgba(0, 0, 0, 0.5);
-    color: rgb(255, 255, 255);
-}
 .layui-tab-content .layui-tab-item {
     height: 100%;
     width: 100%;
     padding: 5px;
     box-sizing: border-box;
+    overflow: hidden;
 }
 iframe {
     height: 100%;
     width: 100%;
+}
+.oper-wrap {
+    position: relative;
+    border-bottom: 1px solid rgba(112,128,144, 0.5);
+    box-sizing: border-box;
+}
+.left, .right {
+    position: absolute;
+    width: auto;
+    height: 100%;
+    line-height: 100%;
+}
+.left {
+    top: 0;
+    left: 0;
+}
+.right {
+    top: 0;
+    right: 0;
+    padding-right: 40px;
+}
+.left::before,
+.right::before {
+    content: '';
+    display: inline-block;
+    vertical-align: middle;
+    height: 100%;
+}
+.left select, .left .layui-inline {
+    vertical-align: middle;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+}
+select {
+    margin: 0 30px 0 40px;
+    height: 30px;
+    line-height: 30px;
+    width:130px;
+    
+}
+.left .layui-inline {
+    padding: 0 5px;
+    background: #fff;
+}
+input {
+    height: 28px;
+    border: none;
+    outline: none;
+}
+.search:hover {
+    color: lightseagreen;
+}
+.search:active {
+    color: red;
+}
+.layui-table-cell {
+    height: auto;
+    line-height: 20px;
+    padding: 0 15px;
+    position: relative;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+    box-sizing: border-box;
 }

@@ -7,6 +7,12 @@
   <title>layout 后台大布局 - Layui</title>
   <link rel="stylesheet" href="static/layui/css/layui.css">
   <link rel="stylesheet" href="static/css/base.css">
+  <style>
+    .layui-tab-title .layui-this {
+      background-color: rgba(0, 0, 0, 0.5);
+      color: rgb(255, 255, 255);
+    }
+  </style>
   <script src="static/js/jquery-3.3.1.min.js"></script>
   <script src="static/layui/layui.js"></script>
 </head>
@@ -130,9 +136,9 @@
     <div class="layui-body">
       <!-- 内容主体区域 -->
       <div class="layui-tab" lay-allowClose="true" lay-filter="demo">
-        <ul class="layui-tab-title" id="tabTitleList">
+        <ul class="layui-tab-title" id="tabTitleList" style="height: 4.4%;">
         </ul>
-        <div class="layui-tab-content">
+        <div class="layui-tab-content" style="height: 95.5%;">
         </div>
       </div>
     </div>

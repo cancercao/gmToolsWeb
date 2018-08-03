@@ -1,5 +1,3 @@
-// var ddList = $('#navList dd');   // 导航列表
-// var id = 1;
 layui.use('element', function () {
     var $ = layui.jquery;
     var element = layui.element;
@@ -54,14 +52,14 @@ layui.use('element', function () {
         active.tabChange(elem.attr("data-id"));
     });
 
-    function FrameWH() {
-        // var h = $(window).height() - 41 - 10 - 60;
-        // $("iframe").css("padding", "10px 10px 0 10px");
-        // $("iframe").css("height", h + "px");
-    }
+    // function FrameWH() {
+    //     // var h = $(window).height() - 41 - 10 - 60;
+    //     // $("iframe").css("padding", "10px 10px 0 10px");
+    //     // $("iframe").css("height", h + "px");
+    // }
 
-    $(window).resize(function () {
-        FrameWH();
-    })
+    // $(window).resize(function () {
+    //     FrameWH();
+    // })
 
 });

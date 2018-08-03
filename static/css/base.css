@@ -77,3 +77,6 @@ input {
     white-space: normal;
     box-sizing: border-box;
 }
+.layui-tab ul.layui-tab-title li:nth-child(1) i {
+    display: none;
+}

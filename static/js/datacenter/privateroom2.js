@@ -6,33 +6,30 @@ layui.use(['element', 'laydate', 'table', 'layer'], function () {
     var layer = layui.layer;
     var table_data;
 
-    // 导出Excel
-    $('#ToExcel').click(function () {
-
-    });
-
-    // 日期查询
-    $('#searchDate').click(function () {
-        var str = $('#date').val();
-        if (str) {
-            var reg = /(\d{1,4})-(\d{1,2})-(\d{1,2})/g; // 正则匹配出开始-结束日期
-            var r = str.match(reg);
-            console.log(r);
-        }
-    });
-
-    // 获取json文件并保存到table_data变量
-    // $.getJSON("1.js", function (data) {
-    //     console.log(data);
-    // });
-
     //日期范围
     laydate.render({
         elem: '#date',
         range: true
     });
 
-    var data;
+    var obj = (function () {
+        var param_obj = {};
+        var param_arr = window.location.search.substr(1).split('&');
+        for (var i = 0; i < param_arr.length; ++i) {
+            var arr = param_arr[i].split('=');
+            param_obj[arr[0]] = arr[1];
+        }
+    }());
+
+    // 导出Excel
+    $('#ToExcel').click(function () {
+
+    });
+
+    // 获取json文件并保存到table_data变量
+    // $.getJSON("1.js", function (data) {
+    //     console.log(data);
+    // });
 
     table.render({
         elem: '#table',
@@ -52,5 +49,8 @@ layui.use(['element', 'laydate', 'table', 'layer'], function () {
             { field: 'sanri', align: 'center', title: '人均局数' }
         ]]
     });
+
+    // 日期查询
+    $('#searchDate').click();
 });
 

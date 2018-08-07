@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>鲸拓后台-私人房数据</title>
+    <link rel="stylesheet" href="../../static/layui/css/layui.css">
+    <link rel="stylesheet" href="../../static/css/base.css">
+    <script src="../../static/js/jquery-3.3.1.min.js"></script>
+    <script src="../../static/layui/layui.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            color: #000;
+        }
+
+        html,
+        body {
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="layui-tab layui-tab-brief" lay-filter="demo" lay-allowClose="true" style="height: 100%; margin: 0;">
+        <ul class="layui-tab-title" id="tabTitleList">
+            <li class="layui-this">私人房数据</li>
+        </ul>
+        <div class="layui-tab-content" style="height: 94%;">
+            <div class="layui-tab-item layui-show">
+                <div class="oper-wrap" style="height: 5%;">
+                    <div class="left">
+                        <select name="" id="gameid" style="margin-right: 20px;">
+                            <option value="xthh" selected>仙桃晃晃</option>
+                            <option value="qjhh">潜江晃晃</option>
+                            <option value="tmhh">天门晃晃</option>
+                            <option value="hchh">汉川晃晃</option>
+                            <option value="shhh">石首晃晃</option>
+                            <option value="hhhh">洪湖晃晃</option>
+                            <option value="tlmj">铜陵麻将</option>
+                            <option value="tcmj">通城麻将</option>
+                            <option value="lamj">六安麻将</option>
+                            <option value="gcmj">高淳麻将</option>
+                            <option value="jxmj">泾县麻将</option>
+                            <option value="lxmj">郎溪麻将</option>
+                            <option value="hqmj">霍邱麻将</option>
+                            <option value="gdmj">广德麻将</option>
+                            <option value="ngmj">宁国麻将</option>
+                            <option value="ljmj">庐江麻将</option>
+                            <option value="jsmj">界首麻将</option>
+                            <option value="hsmj">霍山麻将</option>
+                            <option value="xnmj">休宁麻将</option>
+                            <option value="qphy">亲朋好友圈</option>
+                        </select>
+                        <select name="" id="game" style="margin-left: 0; margin-right: 40px;">
+                            <option value="hh">仙桃晃晃</option>
+                            <option value="lz">仙桃赖子</option>
+                        </select>
+                        <div class="layui-inline">
+                            <input type="text" id="date" placeholder="请选择时间范围">
+                            <label for="date">
+                                <i class="layui-icon" style="vertical-align: middle; font-size: 20px;">&#xe637;</i>
+                            </label>
+                        </div>
+                        <i class="layui-icon search" style="font-size: 22px; margin-left: 20px; vertical-align: middle;" id="searchDate">&#xe615;</i>
+                    </div>
+                    <div class="right">
+                        <!-- <i class="layui-icon search" style="font-size: 22px; margin-left: 20px; vertical-align: middle;">&#xe669;</i> -->
+                        <i class="layui-icon search" style="font-size: 26px; margin-left: 20px; vertical-align: middle;" id="ToExcel">&#xe62d;</i>
+                    </div>
+                </div>
+                <div class="table-wrap" style="height: 93%;">
+                    <table class="layui-hide" id="table" lay-filter="table"></table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../static/js/datacenter/privateroom.js"></script>
+    <script type="text/html" id="barDemo">
+        <a class="layui-btn layui-btn-normal layui-btn-xs" lay-event="">查看详情</a>
+    </script>
+</body>
+
+</html>

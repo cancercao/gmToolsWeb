@@ -80,3 +80,13 @@ input {
 .layui-tab ul.layui-tab-title li:nth-child(1) i {
     display: none;
 }
+.charts {
+    padding: 20px 20px 0 20px;
+    height: 33.3%; 
+    margin: auto; 
+    border: 1px solid lightgray; 
+    border-bottom: none;
+}
+.charts:last-child {
+    border-bottom: 1px solid lightgray; 
+}

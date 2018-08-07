@@ -46,7 +46,7 @@ layui.use(['element', 'laydate', 'table', 'layer'], function () {
             { field: 'gameid', align: 'center', title: '游戏名称', sort: true },
             { field: 'date', align: 'center', title: '日期', sort: true },
             { field: 'changci', align: 'center', title: '场次', sort: true },
-            { field: 'adduser', align: 'center', title: '房间名称' },
+            { field: 'adduser', align: 'center', title: '金币场名称' },
             { field: 'dau', align: 'center', title: 'DAU' },
             { field: 'ciri', align: 'center', title: '总局数' },
             { field: 'sanri', align: 'center', title: '人均局数' }

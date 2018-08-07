@@ -14,21 +14,16 @@
             height: 100%;
         }
     </style>
-    <script src="../static/js/jquery-3.3.1.min.js"></script>
-    <script src="../static/layui/layui.js"></script>
-    <script>
-        console.log(location.href);
-            // var a;
-            // function changeA(str) {
-            //     a = str;
-            //     console.log(a);
-            // }
-        </script>
 </head>
 <body>
-    <div>
-        <input type="text" style="width: 200px;">
-    </div>
-    
+  
+
+    <script>
+        var day = new Date();
+        console.log(day);
+        console.log(day.getDate() + -30)
+        console.log(day.setDate(-23));
+        console.log(day.getFullYear() + '-' + day.getMonth() + '-' + day.getDate())
+    </script>
 </body>
 </html>

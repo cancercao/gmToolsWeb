@@ -1,6 +1,14 @@
-layui.use('element', function () {
+layui.use(['element', 'layer'], function () {
     var $ = layui.jquery;
     var element = layui.element;
+    var layer = layui.layer;
+
+    $('.log').on('mouseover', function () {
+        layer.tips('登入日志', '.log', {
+            tips: [1, '#3595CC'],
+            time: 1000
+        });
+    });
 
 
     //触发事件
@@ -63,3 +71,10 @@ layui.use('element', function () {
     // })
 
 });
+
+$('#logout').click(function () {
+    // $.ajax({
+    //     type
+    // })
+})
+

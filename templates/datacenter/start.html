@@ -8,6 +8,7 @@
     <title>鲸拓后台-开局数据</title>
     <link rel="stylesheet" href="../../static/layui/css/layui.css">
     <link rel="stylesheet" href="../../static/css/base.css">
+    <link rel="stylesheet" href="../../static/css/iconfont.css">
     <script src="../../static/js/jquery-3.3.1.min.js"></script>
     <script src="../../static/layui/layui.js"></script>
     <style>
@@ -56,13 +57,15 @@
                             <option value="xnmj">休宁麻将</option>
                             <option value="qphy">亲朋好友圈</option>
                         </select>
-                        <select name="game" id="game" style="margin-left: 0; margin-right: 20px;">
+                        <select name="game" id="gtype" style="margin-left: 0; margin-right: 20px;">
                             <option value="hh">仙桃晃晃</option>
                             <option value="lz">仙桃赖子</option>
                         </select>
-                        <select name="peopleNum" id="peopleNum" style="margin-left: 0; margin-right: 40px;">
+                        <select name="peopleNum" id="playerNum" style="margin-left: 0; margin-right: 40px;">
                             <option value="two">二人房</option>
+                            <option value="three">二人房</option>
                             <option value="four">四人房</option>
+                            <option value="five">二人房</option>
                         </select>
                         <div class="layui-inline">
                             <input type="text" id="date" placeholder="请选择时间范围">
@@ -73,8 +76,8 @@
                         <i class="layui-icon search" style="font-size: 22px; margin-left: 20px; vertical-align: middle;" id="searchDate">&#xe615;</i>
                     </div>
                     <div class="right">
-                        <!-- <i class="layui-icon search" style="font-size: 22px; margin-left: 20px; vertical-align: middle;">&#xe669;</i> -->
-                        <i class="layui-icon search" style="font-size: 26px; margin-left: 20px; vertical-align: middle;" id="ToExcel">&#xe62d;</i>
+                        <!-- <i class="layui-icon search" style="font-size: 26px; margin-left: 20px; vertical-align: middle;" id="ToExcel">&#xe62d;</i> -->
+                        <i class="iconfont icon-uploadicon06 search" style="font-size: 26px; margin-left: 20px; vertical-align: middle;" id="ToExcel"></i>
                     </div>
                 </div>
                 <div class="table-wrap" style="height: 93%;">

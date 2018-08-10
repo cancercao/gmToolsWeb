@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../static/css/iconfont.css">
     <title>Document</title>
     <style>
         * {
@@ -13,17 +14,42 @@
         html, body {
             height: 100%;
         }
+        .button {
+            width: 200px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            /* height: 40px; */
+            /* line-height: 40px; */
+            /* background: #000; */
+            transform: skewX(-45deg); 
+            position: relative;
+        }
+        .button::before { 
+            width: 200px;
+            height: 40px;
+            line-height: 40px;
+            transform: skewX(-45deg); 
+            content: ''; 
+            position: absolute; 
+            top: 0; 
+            right: 0;
+            bottom: 0; 
+            left: 0;
+            z-index: -1;
+            background: green;
+        }
+        .iconfont {
+            font-size: 30px;
+            color: lightblue;
+        }
     </style>
 </head>
 <body>
   
-
+    <i class="iconfont icon-uploadicon06"></i>
     <script>
-        var day = new Date();
-        console.log(day);
-        console.log(day.getDate() + -30)
-        console.log(day.setDate(-23));
-        console.log(day.getFullYear() + '-' + day.getMonth() + '-' + day.getDate())
+        
     </script>
 </body>
 </html>

@@ -1,4 +1,5 @@
 var today = getNowFormatDate(0);
+var yesterday = getNowFormatDate(-1);
 var myChart = echarts.init(document.getElementById("container"));;
 
 // 日期选择器
@@ -6,7 +7,8 @@ layui.use('laydate', function () {
     var laydate = layui.laydate;
     laydate.render({
         elem: '#date',
-        range: true
+        range: true,
+        max: yesterday
     });
 })
 
@@ -38,7 +40,7 @@ function getNowFormatDate(addDayCount) {
 
 // 获取需要查询日期的数据
 function convertCharData(data, date1, date2) {
-    var d = data.data,
+    var d = data,
         dd = [],
         data1 = [],
         data2 = [],
@@ -66,8 +68,14 @@ function convertCharData(data, date1, date2) {
             type: 'line',
             stack: '今日',
             data: data1,
-
-
+            itemStyle: {
+                normal: {
+                    color: '#59c4e6',
+                    lineStyle: {
+                        color: '#59c4e6'
+                    }
+                }
+            }
         });
         legend.push('今日');
     }
@@ -80,6 +88,14 @@ function convertCharData(data, date1, date2) {
             type: 'line',
             stack: x,
             data: data2,
+            itemStyle: {
+                normal: {
+                    color: '#d87c7c',
+                    lineStyle: {
+                        color: '#d87c7c'
+                    }
+                }
+            }
         });
         legend.push(x);
     }
@@ -92,6 +108,14 @@ function convertCharData(data, date1, date2) {
             type: 'line',
             stack: x,
             data: data3,
+            itemStyle: {
+                normal: {
+                    color: '#edafda',
+                    lineStyle: {
+                        color: '#edafda'
+                    }
+                }
+            }
         });
         legend.push(x);
     }
@@ -102,247 +126,107 @@ function convertCharData(data, date1, date2) {
     return ret;
 }
 
-function charDateHandler() {
-    var str = $('#date').val();
-    var reg = /(\d{1,4})-(\d{1,2})-(\d{1,2})/g; // 正则匹配出 开始/结束 日期
-    var date_arr = str.match(reg);
-    if (date_arr[0] == date_arr[1]) {
-        layui.use('layer', function () {
-            var layer = layui.layer;
-            layer.alert('日期一与日期二相同，请重新输入', { icon: 7, title: '系统信息', skin: 'layui-layer-molv', offset: '200px' });
-        });
-        return;
-    } else {
-        myChart.showLoading();
-        myChart && myChart.clear();
-        myChart && myChart.getOption();
-        // myChart = echarts.init(document.getElementById("container"));
-        $.ajax({
-            type: 'get',
-            url: '',
-            dataType: 'json',
-            data: {
-                gid: $('#gameid').val(),
-                date1: date_arr[0],
-                date2: date_arr[1]
-            },
-            success: function (data) {
-                var d = JSON.parse(data);
-                data = convertCharData(d, date_arr[0], date_arr[1], 'light');
-                myChart.setOption({
-                    title: {
-                        text: '注册人数'
+function charDateHandler(date1, date2) {
+    myChart.showLoading();
+    myChart && myChart.clear();
+    myChart && myChart.getOption();
+    // myChart = echarts.init(document.getElementById("container"));
+    $.ajax({
+        type: 'get',
+        url: 'http://localhost:3000/data',
+        data: {
+            gid: $('#gameid').val(),
+            date1: date1,
+            date2: date2
+        },
+        success: function (data) {
+            // var d = JSON.parse(data);
+            data = convertCharData(data, date1, date2);
+            myChart.setOption({
+                title: {
+                    text: '注册人数',
+                    textStyle: {
+                        color: '#59c4e6'
+                    }
+                },
+                tooltip: {
+                    trigger: 'axis',
+                    axisPointer: {
+                        type: 'line'
+                    }
+                },
+                legend: {
+                    data: data.legend
+                },
+                grid: {
+                    left: '3%',
+                    right: '4%',
+                    bottom: '3%',
+                    containLabel: true
+                },
+                toolbox: {
+                    show: true,
+                    feature: {
+                        dataZoom: {
+                            yAxisIndex: 'none'
+                        },
+                        dataView: { readOnly: false },
+                        magicType: { type: ['line', 'bar'] },
+                        restore: {},
+                        saveAsImage: {}
                     },
-                    tooltip: {
-                        trigger: 'axis',
-                        axisPointer: {
-                            type: 'line'
-                        }
-                    },
-                    legend: {
-                        data: data.legend
-                    },
-                    grid: {
-                        left: '3%',
-                        right: '4%',
-                        bottom: '3%',
-                        containLabel: true
-                    },
-                    toolbox: {
-                        show: true,
-                        feature: {
-                            dataZoom: {
-                                yAxisIndex: 'none'
-                            },
-                            dataView: { readOnly: false },
-                            magicType: { type: ['line', 'bar'] },
-                            restore: {},
-                            saveAsImage: {}
-                        }
-                    },
-                    xAxis: {
-                        type: 'category',
-                        boundaryGap: false,
-                        data: data.xdata,
-                        axisLabel: {
-                            interval: 23
-                        }
-                    },
-                    yAxis: {
-                        type: 'value'
-                    },
-                    series: data.series
-                });
-            },
-            // error: function () {
-            //     layui.use('layer', function () {
-            //         var layer = layui.layer;
-            //         layer.alert('获取图表数据时出错了，请联系管理员', { icon: 2, title: '系统信息', skin: 'layui-layer-molv', offset: '200px' });
-            //     });
-            // }
-        });
-        myChart.hideLoading();
-    }
+                    iconStyle: {
+                        borderColor: '#1abc9c'
+                    }
+                },
+                xAxis: {
+                    type: 'category',
+                    boundaryGap: false,
+                    data: data.xdata,
+                    axisLabel: {
+                        interval: 23
+                    }
+                },
+                yAxis: {
+                    type: 'value'
+                },
+                series: data.series
+            });
+        },
+        error: function () {
+            layui.use('layer', function () {
+                var layer = layui.layer;
+                layer.alert('获取图表数据时出错了，请联系管理员', { icon: 2, title: '系统信息', skin: 'layui-layer-molv', offset: '200px' });
+            });
+        }
+    });
+    myChart.hideLoading();
 }
 
 // 日期查询
-$('#searchDate').click(charDateHandler);
+$('#searchDate').click(function () {
+    var str = $('#date').val();
+    var reg = /(\d{1,4})-(\d{1,2})-(\d{1,2})/g; // 正则匹配出 开始/结束 日期
+    var date_arr = str.match(reg);
+    if (str) {
+        if (date_arr[0] == date_arr[1]) {
+            layui.use('layer', function () {
+                var layer = layui.layer;
+                layer.alert('日期一与日期二相同，请重新输入', { icon: 7, title: '系统信息', skin: 'layui-layer-molv', offset: '200px' });
+            });
+            return;
+        } else {
+            charDateHandler(date_arr[0], date_arr[1]);
+        }
+    }else {
+        layui.use('layer', function () {
+            var layer = layui.layer;
+            layer.alert('请先选择需要查询的日期', { icon: 7, title: '系统信息', skin: 'layui-layer-molv', offset: '200px' });
+        })
+    }
+});
 
 // 刷新操作
-$('#refresh').click(charDateHandler);
+$('#refresh').click({ date1: yesterday }, charDateHandler);
 
-// 打开页面后默认初始化操作
-$('#date').val(getNowFormatDate(-1) + ' - ' + today);       // 初始化日期选择器中当前日期为今日和昨日
-charDateHandler();
-
-
-
-
-
-
-
-
-// function canvChart(dateArr) {
-// $.ajax({
-//     type: 'get',
-//     url: '',
-//     dataType: 'json',
-//     data: {
-
-//     },
-//     beforeSend: function () {
-//         index = layer.load(0, {shade: false});
-//     },
-//     success: function (res) {
-// if (res.status == "1") {
-//     initChart()
-// }
-//     },
-//     complete: function () {
-//         layer.close(index);
-//     },
-//     error: function () {
-
-//     }
-// });
-// }
-
-// function getNowFormatDate() {
-//     // 获取线性图标曲线数据名
-//     var lines_tips = (function () {
-//         var today = new Date();
-//         var month = today.getMonth() + 1;
-//         var day = today.getDate() - 1;
-//         if (month < 10) {
-//             month_str = '0' + month;
-//         } else {
-//             month_str = month.toString();
-//         }
-//         if (day < 10) {
-//             day_str = '0' + day;
-//         } else {
-//             day_str = day.toString();
-//         }
-//         return ['今日', month_str + '-' + day_str];
-//     })
-// }
-
-// // 获取数据生成图标
-// function initChart() {
-//         var dom = document.getElementById("container");
-//         var myChart = echarts.init(dom);
-//         var app = {};
-//         var option = null;
-
-//         option = {
-//             title: {
-//                 text: '注册人数',
-//                 left: '7.5%',
-//                 textStyle: {
-//                     color: '#59c4e6'
-//                 }
-//             },
-//             tooltip: {
-//                 trigger: 'axis'
-//             },
-//             legend: {
-//                 data: lines_tips
-//             },
-//             toolbox: {
-//                 show: true,
-//                 right: '7.5%',
-//                 feature: {
-//                     dataZoom: {
-//                         yAxisIndex: 'none'
-//                     },
-//                     dataView: { readOnly: false },
-//                     magicType: { type: ['line', 'bar'] },
-//                     restore: {},
-//                     saveAsImage: {}
-//                 },
-//                 iconStyle: {
-//                     borderColor: '#1abc9c'
-//                 }
-//             },
-//             xAxis: {
-//                 type: 'category',
-//                 boundaryGap: false,
-//                 // data: ['00:00', '02:00', '04:00', '06:00', '08:00', '10:00', '12:00', '14:00', '16:00', '18:00', '20:00', '22:00', '23:59']
-//                 data: function () {
-//                     var list = [];
-//                     var num = 0;
-//                     var h = 0;
-//                     var m = 0;
-//                     for (var i = 0; i < 288; i++) {
-//                         num = i % 12;
-//                         if (num == 11) {
-//                             if (h < 23) {
-//                                 h++;
-//                             }
-//                         }
-//                         num = num * 5;
-//                         list.push(h + ":" + num);
-//                     }
-//                     return list;
-//                 }(),
-// axisLabel: {
-//     interval: 24
-// }
-//             },
-//             yAxis: {
-//                 type: 'value'
-//             },
-//             series: [
-//                 {
-//                     name: lines_tips[0],
-//                     type: 'line',
-//                     itemStyle: {
-//                         normal: {
-//                             color: '#59c4e6',
-//                             lineStyle: {
-//                                 color: '#59c4e6'
-//                             }
-//                         }
-//                     },
-//                     data: [5, 20, 36, 10, 10, 20, 90, 64, 49, 81, 81, 57, 13, 18, 67, 98, 91, 54, 86, 73, 28, 19, 67, 42, 35, 87, 73, 51]
-//                 },
-//                 {
-//                     name: lines_tips[1],
-//                     type: 'line',
-//                     itemStyle: {
-//                         normal: {
-//                             color: '#d87c7c',
-//                             lineStyle: {
-//                                 color: '#d87c7c'
-//                             }
-//                         }
-//                     },
-//                     data: [23, 25, 36, 38, 10, 20]
-//                 }
-//             ]
-//         };
-
-//         if (option && typeof option === "object") {
-//             myChart.setOption(option, true);
-//         }
-//     }
+charDateHandler(yesterday, '');

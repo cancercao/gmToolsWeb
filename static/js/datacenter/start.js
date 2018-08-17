@@ -23,6 +23,28 @@ layui.use(['element', 'laydate', 'table', 'layer'], function () {
     $('#ToExcel').click(function () {
 
     });
+    
+    // 判断是否有三人房
+    function judgeThreeRoom (gameid, gtype) {
+        if (gameid == 'tcmj') {
+            $('.three').show();
+        }else {
+            $('#playerNum').val('two');
+            if (gameid == 'tmhh') {
+                if (gtype == 'yh' || gtype == 'yhszj') {
+                    $('.three').show();
+                }else {
+                    $('.three').hide();
+                }
+            }else {
+                if (gtype.indexOf('srlm') != -1 || gtype.indexOf('szj') != -1) {
+                    $('.three').show();
+                }else {
+                    $('.three').hide();
+                }
+            }
+        }
+    }
 
     // 二级下拉菜单级联
     $('#gameid').change(function () {
@@ -32,85 +54,99 @@ layui.use(['element', 'laydate', 'table', 'layer'], function () {
         switch (gameid) {
             case 'xthh':
                 game.append("<option value='hh'>仙桃晃晃</option>");
-                game.append("<option value='lz'>仙桃赖子</option>");
+                game.append("<option value='xtsrlm'>仙桃三人俩门</option>");
                 break;
             case 'qjhh':
-                game.append("<option value='Value'>潜江晃晃</option>");
-                game.append("<option value='Value'>Text</option>");
+                game.append("<option value='hh'>潜江晃晃</option>");
+                game.append("<option value='szj'>潜江三只脚</option>");
                 break;
             case 'tmhh':
-                game.append("<option value='Value'>Text</option>");
-                game.append("<option value='Value'>Text</option>");
+                game.append("<option value='lh'>天门赖晃</option>");
+                game.append("<option value='yh'>天门硬晃</option>");
+                game.append("<option value='yhszj'>天门硬晃三只脚</option>");
                 break;
             case 'hchh':
-                game.append("<option value='Value'>Text</option>");
-                game.append("<option value='Value'>Text</option>");
+                game.append("<option value='lh'>汉川赖晃</option>");
+                game.append("<option value='yh'>汉川硬晃</option>");
                 break;
-            case 'shhh':
-                game.append("<option value='Value'>Text</option>");
-                game.append("<option value='Value'>Text</option>");
+            case 'sshh':
+                game.append("<option value='hh'>石首晃晃</option>");
                 break;
             case 'hhhh':
-                game.append("<option value='Value'>Text</option>");
-                game.append("<option value='Value'>Text</option>");
+                game.append("<option value='yh'>洪湖硬晃</option>");
+                game.append("<option value='yhsrlm'>洪湖硬晃三人俩门</option>");
+                game.append("<option value='lh'>洪湖赖晃</option>");
+                game.append("<option value='lhsrlm'>洪湖赖晃三人俩门</option>");
                 break;
             case 'tlmj':
-                game.append("<option value='Value'>Text</option>");
-                game.append("<option value='Value'>Text</option>");
+                game.append("<option value='mj'>铜陵麻将</option>");
+                game.append("<option value='hz'>红中麻将</option>");
                 break;
             case 'tcmj':
-                game.append("<option value='mj'>通城麻将</option>");
-                game.append("<option value='gz'>通城个子</option>");
+                game.append("<option value='yl'>通城有赖</option>");
+                game.append("<option value='wl'>通城无赖</option>");
                 break;
             case 'lamj':
-                game.append("<option value='Value'>Text</option>");
-                game.append("<option value='Value'>Text</option>");
+                game.append("<option value='mj'>六安麻将</option>");
                 break;
             case 'gcmj':
-                game.append("<option value='Value'>Text</option>");
-                game.append("<option value='Value'>Text</option>");
+                game.append("<option value='mj'>高淳麻将</option>");
                 break;
             case 'jxmj':
-                game.append("<option value='Value'>Text</option>");
-                game.append("<option value='Value'>Text</option>");
+                game.append("<option value='mj'>泾县麻将</option>");
+                game.append("<option value='hz'>红中麻将</option>");
                 break;
             case 'lxmj':
-                game.append("<option value='Value'>Text</option>");
-                game.append("<option value='Value'>Text</option>");
+                game.append("<option value='mj'>郎溪麻将</option>");
+                game.append("<option value='hz'>红中麻将</option>");
                 break;
             case 'hqmj':
-                game.append("<option value='Value'>Text</option>");
-                game.append("<option value='Value'>Text</option>");
+                game.append("<option value='mj'>霍邱麻将</option>");
                 break;
             case 'gdmj':
-                game.append("<option value='Value'>Text</option>");
-                game.append("<option value='Value'>Text</option>");
+                game.append("<option value='mj'>广德麻将</option>");
+                game.append("<option value='hz'>红中麻将</option>");
+                game.append("<option value='srlm'>广德三人俩门</option>");
                 break;
             case 'ngmj':
-                game.append("<option value='Value'>Text</option>");
-                game.append("<option value='Value'>Text</option>");
+                game.append("<option value='mj'>宁国麻将</option>");
                 break;
             case 'ljmj':
-                game.append("<option value='Value'>Text</option>");
-                game.append("<option value='Value'>Text</option>");
+                game.append("<option value='mj'>庐江麻将</option>");
                 break;
             case 'jsmj':
-                game.append("<option value='Value'>Text</option>");
-                game.append("<option value='Value'>Text</option>");
+                game.append("<option value='mj'>界首麻将</option>");
+                game.append("<option value='srlm'>界首三人俩门</option>");
                 break;
             case 'hsmj':
-                game.append("<option value='Value'>Text</option>");
-                game.append("<option value='Value'>Text</option>");
+                game.append("<option value='mj'>霍山麻将</option>");
                 break;
             case 'xnmj':
-                game.append("<option value='Value'>Text</option>");
-                game.append("<option value='Value'>Text</option>");
+                game.append("<option value='mj'>休宁麻将</option>");
+                game.append("<option value='srlm'>休宁三人俩门</option>");
                 break;
             case 'qphy':
-                game.append("<option value='Value'>Text</option>");
-                game.append("<option value='Value'>Text</option>");
+                game.append("<option value='jz'>金寨麻将</option>");
+                game.append("<option value='sx'>寿县麻将</option>");
+                game.append("<option value='sxsrlm'>寿县三人俩门</option>");
+                game.append("<option value='lx'>溧水麻将</option>");
+                game.append("<option value='wd'>文登麻将</option>");
+                game.append("<option value='wdsrlm'>文登三人俩门</option>");
+                game.append("<option value='ly'>莱阳麻将</option>");
+                game.append("<option value='hs'>合山麻将</option>");
+                game.append("<option value='sc'>上蔡麻将</option>");
+                game.append("<option value='js'>京山麻将</option>");
                 break;
         }
+        var gtype = $('#gtype').find("option:selected").val();
+        judgeThreeRoom(gameid, gtype);
+    });
+
+    // 玩法更改，房间人数变更
+    $('#gtype').change(function () {
+        var gameid = $('#gameid').find("option:selected").val();   // 获取选中的游戏
+        var gtype = $(this).find("option:selected").val();   // 获取的类型
+        judgeThreeRoom(gameid, gtype);
     });
 
     // 日期格式化

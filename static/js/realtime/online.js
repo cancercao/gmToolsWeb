@@ -261,7 +261,10 @@ $('#searchDate').click(function () {
     }
 });
 
+
 // 刷新操作
-$('#refresh').click({ date1: yesterday, date2: '' }, charDateHandler);
+$('#refresh').click(function () {
+    charDateHandler(yesterday, '');
+});
 
 charDateHandler(yesterday, '');

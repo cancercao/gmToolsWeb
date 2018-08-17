@@ -17,12 +17,7 @@ function subLogin() {
     if (!username || !password) {
         error.text('请填写正确的用户名和密码');
         error.show();
-    }
-    else if(id=="请选择阿里云账户"){
-        error.text('请选择阿里云账户');
-        error.show();
-    }
-    else {
+    }else {
         $.ajax({
             cache: false,
             type: 'post',
@@ -33,7 +28,7 @@ function subLogin() {
                 'id':id
             },
             beforeSend: function () {
-                $('.sub').text('跳转中，请稍后...');
+                $('.sub').text('Loading...');
             },
             success: function (res) {
                 if (res.status == 'error') {

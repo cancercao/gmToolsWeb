@@ -227,6 +227,8 @@ $('#searchDate').click(function () {
 });
 
 // 刷新操作
-$('#refresh').click({ date1: yesterday }, charDateHandler);
+$('#refresh').click(function () {
+    charDateHandler(yesterday, '');
+});
 
 charDateHandler(yesterday, '');
